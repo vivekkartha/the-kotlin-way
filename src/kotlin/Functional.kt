@@ -16,8 +16,7 @@ class Functional {
         return filteredSongs
     }
 
-    /**The Kotlin way of doing it. As simple as doing it in a single line.
-     *  Makes your code cleaner,readable and less-prone to bugs
+    /**The Kotlin way of doing it.
      */
     fun getSongsByArtistK(artist:String)= songList.filter { it.name == artist }
 
