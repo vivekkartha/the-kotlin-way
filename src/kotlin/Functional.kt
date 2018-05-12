@@ -9,7 +9,7 @@ class Functional {
     fun getSongsByArtist(artist:String=""):MutableList<Song>{
         val filteredSongs= mutableListOf<Song>()
         for(song in songList){
-            if (song.name==artist){
+            if (song.artist==artist){
                 filteredSongs.add(song)
             }
         }
@@ -18,6 +18,6 @@ class Functional {
 
     /**The Kotlin way of doing it.
      */
-    fun getSongsByArtistK(artist:String)= songList.filter { it.name == artist }
+    fun getSongsByArtistK(artist:String)= songList.filter { it.artist == artist }
 
 }
