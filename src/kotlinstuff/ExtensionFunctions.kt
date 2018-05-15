@@ -3,7 +3,7 @@ package kotlinstuff
 private val supportedGenres = arrayListOf("pop", "rock", "hip-hop", "jazz")
 
 /**Extension functions extend the functionality of various classes.
- * Here String class is added with an additional function isGenreSupported()
+ * Here String class is added with an additional function isGenreAllowed()
  * without modifying the String class itself.
  * @return Boolean
  * this - is the arg object of type String.
