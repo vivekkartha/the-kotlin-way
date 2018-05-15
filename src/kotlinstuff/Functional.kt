@@ -1,4 +1,4 @@
-package kotlin
+package kotlinstuff
 
 class Functional {
     val songList = mutableListOf<Song>()
@@ -6,10 +6,11 @@ class Functional {
     /**
      *Non-functional tedious approach*
      */
-    fun getSongsByArtist(artist:String=""):MutableList<Song>{
+    fun getSongsByArtist(artist: String =""):MutableList<Song>{
         val filteredSongs= mutableListOf<Song>()
         for(song in songList){
             if (song.artist==artist){
+
                 filteredSongs.add(song)
             }
         }
@@ -18,6 +19,6 @@ class Functional {
 
     /**The Kotlin way of doing it.
      */
-    fun getSongsByArtistK(artist:String)= songList.filter { it.artist == artist }
+    fun getSongsByArtistK(artist: String)= songList.filter { it.artist == artist }
 
 }

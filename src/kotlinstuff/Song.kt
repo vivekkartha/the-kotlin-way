@@ -1,4 +1,4 @@
-package kotlin
+package kotlinstuff
 
 /**
  * Simplified Kotlin way of writing the Song class
