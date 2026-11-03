@@ -1,24 +1,31 @@
 # SMS API Lab (Android)
 
-A small native Kotlin app for testing Android's `SmsManager.createForSubscriptionId(subId)` with two SIMs.
+A small native Kotlin app for testing `SmsManager.createForSubscriptionId(subId)` with two SIMs.
+
+## Download APK
+
+**[Download SMS-API-Lab.apk](https://github.com/vivekkartha/the-kotlin-way/raw/refs/heads/android-sms-playground/SMS-API-Lab.apk)**
+
+The signed debug APK is maintained at **`SMS-API-Lab.apk` in the root of the `android-sms-playground` branch**. No Gmail attachment, ZIP extraction, or GitHub Actions artifact page needed.
 
 ## Use
-1. Open the [GitHub Actions page](https://github.com/vivekkartha/the-kotlin-way/actions/workflows/build-apk.yml) and select the latest **SMS API Lab APK** run.
-2. Download the `sms-api-lab-debug-apk` artifact ZIP, unzip it, and install `app-debug.apk` on an Android 12+ physical phone.
-3. Grant **SMS** and **Phone** permissions.
-4. Enter a phone number you control and a short SMS message. Tap **Send SMS via SIM 1** and then **Send SMS via SIM 2**.
-5. Compare the result callbacks in the app and actual thread behavior in Google Messages or your default Messaging app.
+
+1. Download the APK above and install it on an Android 12+ physical phone.
+2. Grant SMS and Phone permissions.
+3. Enter a phone number you control and a short SMS message.
+4. Tap **Send SMS via SIM 1**, then **Send SMS via SIM 2**.
+5. Compare result callbacks here with actual thread behavior in Google Messages or your default Messaging app.
 
 ## Notes
-- This APK is a debug-only sideloaded utility, not a Play Store app.
-- Each send uses the Android 12+ `context.getSystemService(SmsManager::class.java).createForSubscriptionId(subId)` API.
-- Android SMS permission may be restricted by device policy or security controls.
-- **A successful send does not prove whether the Messages app reuses a conversation thread.** That UI behavior depends on the default Messaging app and device.
-- The app does not collect or upload numbers, messages, or logs.
-- SMS sends can incur carrier fees. Only send to numbers you control.
-- The `master` branch is unchanged; this test app lives only on `android-sms-playground`.
 
-## Build
-The `.github/workflows/build-apk.yml` workflow installs Android SDK + Gradle in GitHub Actions, builds `app-debug.apk`, and publishes it as a downloadable artifact for 7 days.
+- Debug-only sideloaded utility, not a Play Store app.
+- Each send uses `createForSubscriptionId(subId)` to select its outbound SIM.
+- Android SMS permission may be restricted by security controls or device policy.
+- **Sending from a selected subscription does not guarantee how a messaging app groups conversations.** Check that on-device.
+- No numbers, SMS contents, or logs are uploaded by this app.
+- Carriers may charge for SMS. Use a recipient number you control.
+- The `master` branch is unchanged; this app is on `android-sms-playground`.
 
-To rebuild: edit Kotlin code and push to `android-sms-playground`. The workflow starts automatically.
+## Rebuild
+
+Edit code on `android-sms-playground` and push. GitHub Actions builds the APK and commits the resulting `SMS-API-Lab.apk` back to the branch root automatically. The Actions run also stores a downloadable build artifact for 7 days. APK-only commits do not retrigger the build.
